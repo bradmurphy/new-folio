@@ -10,6 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/paper-spinner/paper-spinner-lite.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
 <script type="text/javascript" src="../bower_components/instafeed.js/instafeed.min.js"></script>
 <link rel="import" href="styles/shared-styles.html">
 
@@ -112,10 +113,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        margin-right: 0;
      }
 
-     .instagram__photo img {
+     .instagram__photo iron-image {
        display: block;
        width: 100%;
        max-width: 100%;
+       --iron-image-width: 100%;
        height: auto;
      }
 
@@ -197,6 +199,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     }
 
+
+    @media screen and (max-width: 414px) {
+      .profile__picture--picture {
+        width: 280px;
+        height: 187px;
+      }
+    }
+
     </style>
 
     <h1 class="about-header">ABOUT</h1>
@@ -219,7 +229,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <paper-spinner-lite class="instagram__loader" active="[[!loaded]]"></paper-spinner-lite>
       <template is="dom-repeat" items="[[responseData]]" as="picture">
         <a href="[[picture.link]]" class="instagram__photo" target="_blank">
-          <img src="[[picture.images.standard_resolution.url]]" alt="Instagram Photo">
+          <iron-image src="[[picture.images.standard_resolution.url]]" alt="Instagram Photo" fade></iron-image>
         </a>
       </template>
     </div>
