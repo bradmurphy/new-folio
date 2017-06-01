@@ -1,0 +1,53 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<!-- shared styles for all views -->
+<dom-module id="shared-styles">
+  <template>
+    <style>
+
+      h1 {
+        position: relative;
+        text-align: right;
+        font-family: var(--font-raleway);
+        color: var(--app-orange);
+        font-weight: 700;
+      }
+
+      h1:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        bottom: -15px;
+        height: 4px;
+        background: var(--app-navy);
+        margin-bottom: 10px;
+      }
+
+      p, span {
+        font: var(--font-open-sans);
+        font-size: 16px;
+      }
+
+      @media screen and (max-width: 414px) {
+        h1 {
+          text-align: left;
+        }
+
+        h1:after {
+          left: 0;
+        }
+      }
+
+    </style>
+  </template>
+</dom-module>

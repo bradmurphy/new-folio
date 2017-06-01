@@ -1,0 +1,336 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="app-icons.html">
+
+<link rel="lazy-import" href="app-about.html">
+<link rel="lazy-import" href="app-work.html">
+<link rel="lazy-import" href="app-contact.html">
+<link rel="lazy-import" href="app-404.html">
+
+<dom-module id="folio-app">
+  <template>
+    <style>
+
+      /**
+       * Host, variables and basic element styles
+       */
+      :host {
+        --max-site-width: 1280px;
+        --app-orange: #f27124;
+        --app-navy: #001f3f;
+        --app-charcoal: #333;
+        --app-gray: #e0e0e0;
+        --app-hook: #ff498a;
+        --font-raleway: 'Raleway', sans-serif;
+        --font-open-sans: 'Open Sans Condensed', sans-serif;;
+
+        display: block;
+      }
+
+      app-drawer-layout:not([narrow]) [drawer-toggle] {
+        display: none;
+      }
+
+      app-header {
+        background-color: var(--app-navy);
+      }
+
+      app-header paper-icon-button {
+        --paper-icon-button-ink-color: white;
+      }
+
+      /**
+       * Drawer styles
+       */
+
+      #drawer app-toolbar {
+        background-image: url('../images/logo.png');
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        -webkit-background-size: 80px;
+        -o-background-size: 80px;
+        background-size: 80px;
+        color: var(--app-charcoal);
+        margin-top: 20px;
+        height: 80px;
+      }
+
+      .drawer-list {
+        margin: 0 20px;
+      }
+
+      .drawer-list a {
+        display: block;
+        padding: 0 16px;
+        font-family: var(--font-raleway);
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--app-navy);
+        font-weight: 700;
+        line-height: 40px;
+        text-transform: uppercase;
+        text-align: center;
+        outline: none;
+        border: none;
+        text-decoration: none;
+      }
+
+      .drawer-list a.iron-selected {
+        background: var(--app-navy);
+        color: var(--app-orange);
+      }
+
+      /**
+       * Site header and content styles
+       */
+
+      .site__header,
+      .site__content {
+        width: 100%;
+        max-width: var(--max-site-width);
+        margin: 0 auto;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      .site__header {
+        height: 100px;
+        -ms-flex-pack: justify;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
+      }
+
+      .header-list a {
+        font-family: var(--font-raleway);
+        font-size: 20px;
+        font-weight: 700;
+        color: #fff;
+        text-transform: uppercase;
+        display: inline-block;
+        margin-right: 20px;
+        letter-spacing: 1px;
+        text-decoration: none;
+      }
+
+      .header-list a.iron-selected {
+        color: var(--app-orange);
+      }
+
+      .header-list a:last-child {
+        margin-right: 0;
+      }
+
+      .header-top-logo {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center;
+        height: 100%;
+        text-indent: 16px;
+      }
+
+      .header__logo {
+        height: 65px;
+      }
+
+      .header__logo-link {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+      }
+
+      /**
+       * Hamburger style
+       */
+
+      .icon--hamburger {
+        color: var(--app-orange);
+        display: none;
+      }
+
+      @media screen and (max-width: 1280px) {
+        .site__header,
+        .site__content {
+          padding: 0 20px;
+        }
+      }
+
+      @media screen and (max-width: 767px) {
+        .header-top-logo {
+          -webkit-box-align: center;
+          -webkit-align-items: center;
+          -ms-flex-align: center;
+          align-items: center;
+        }
+      }
+
+      @media screen and (max-width: 414px) {
+        .header-list {
+          display: none;
+        }
+
+        .icon--hamburger {
+          display: block;
+        }
+
+        .site__header {
+          height: 70px;
+        }
+
+        .header__logo {
+          height: 45px;
+        }
+      }
+    </style>
+
+    <app-location route="{{route}}"></app-location>
+    <app-route
+        route="{{route}}"
+        pattern="[[rootPattern]]:page"
+        data="{{routeData}}"
+        tail="{{subroute}}"></app-route>
+
+    <app-drawer-layout force-narrow fullbleed class="site-layout">
+      <!-- Drawer content -->
+      <app-drawer id="drawer" slot="drawer">
+        <app-toolbar></app-toolbar>
+        <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+          <a name="about" href="about">About</a>
+          <a name="work" href="work">Work</a>
+          <a name="contact" href="contact">Contact</a>
+        </iron-selector>
+      </app-drawer>
+
+      <!-- Main content -->
+      <app-header-layout has-scrolling-region>
+
+        <app-header slot="header" condenses reveals effects="waterfall">
+          <app-toolbar class="site__header">
+            <div class="header-top-logo">
+              <a href="/" class="header__logo-link">
+                <img class="header__logo" src="../images/logo.png">
+              </a>
+            </div>
+            <iron-selector selected="[[page]]" attr-for-selected="name" class="header-list" role="navigation">
+              <a name="about" href="about">About</a>
+              <a name="work" href="work">Work</a>
+              <a name="contact" href="contact">Contact</a>
+            </iron-selector>
+            <paper-icon-button class="icon--hamburger" icon="app-icons:menu" drawer-toggle></paper-icon-button>
+          </app-toolbar>
+        </app-header>
+
+        <main class="site__content" id="siteContent">
+          <iron-pages
+              selected="[[page]]"
+              attr-for-selected="name"
+              fallback-selection="404"
+              role="main">
+            <app-about name="about"></app-about>
+            <app-work name="work"></app-work>
+            <app-contact name="contact"></app-contact>
+            <app-404 name="404"></app-404>
+          </iron-pages>
+        </main>
+
+      </app-header-layout>
+    </app-drawer-layout>
+  </template>
+
+  <script>
+    class folioApp extends Polymer.Element {
+
+      static get is() { return 'folio-app'; }
+
+      static get properties() {
+        return {
+          page: {
+            type: String,
+            reflectToAttribute: true,
+            observer: '_pageChanged',
+          },
+          rootPattern: String,
+          routeData: Object,
+          subroute: String,
+        };
+      }
+
+      static get observers() {
+        return [
+          '_routePageChanged(routeData.page)',
+        ];
+      }
+
+      constructor() {
+        super();
+
+        // Get root pattern for app-route, for more info about `rootPath` see:
+        // https://www.polymer-project.org/2.0/docs/upgrade#urls-in-templates
+        this.rootPattern = (new URL(this.rootPath)).pathname;
+      }
+
+      _routePageChanged(page) {
+        // Polymer 2.0 will call with `undefined` on initialization.
+        // Ignore until we are properly called with a string.
+        if (page === undefined) {
+          return;
+        }
+
+        // If no page was found in the route data, page will be an empty string.
+        // Default to 'about' in that case.
+        this.page = page || 'about';
+
+        // Close a non-persistent drawer when the page & route are changed.
+        if (!this.$.drawer.persistent) {
+          this.$.drawer.close();
+        }
+
+        TweenMax.fromTo(this.$.siteContent, 0.8,
+          {opacity: 0, y: -225, ease: Power1.easeIn},
+          {opacity: 1, y: 0, ease: Power4.easeOut}
+        )
+      }
+
+      _pageChanged(page) {
+        // Load page import on demand. Show 404 page if fails
+        var resolvedPageUrl = this.resolveUrl('app-' + page + '.html');
+        Polymer.importHref(
+            resolvedPageUrl,
+            null,
+            this._showPage404.bind(this),
+            true);
+      }
+
+      _showPage404() {
+        this.page = '404';
+      }
+    }
+
+    window.customElements.define(folioApp.is, folioApp);
+  </script>
+</dom-module>
