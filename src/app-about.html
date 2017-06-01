@@ -9,6 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-spinner/paper-spinner-lite.html">
 <script type="text/javascript" src="../bower_components/instafeed.js/instafeed.min.js"></script>
 <link rel="import" href="styles/shared-styles.html">
 
@@ -69,6 +70,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        */
 
      .instagram__feed {
+       position: relative;
        display: -ms-flexbox;
        display: -webkit-flex;
        display: flex;
@@ -91,6 +93,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        border-top: 5px solid var(--app-navy);
      }
 
+     .instagram__loader {
+       position: absolute;
+       left: 50%;
+       top: 50px;
+       -webkit-transform: translateX(-50%);
+       transform: translateX(-50%);
+       --paper-spinner-color: var(--app-orange);
+     }
+
      .instagram__photo {
        width: 23.5%;
        margin: 0 2% 20px 0;
@@ -108,84 +119,83 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        height: auto;
      }
 
-
-      @media screen and (max-width: 1100px) {
-        .profile__picture--container {
-          width: 55%;
-        }
-
-        article {
-          width: 45%;
-        }
-
-        .profile__picture--picture {
-          width: 400px;
-          height: 268px;
-        }
-
-        .instagram__photo {
-          width: 30%;
-        }
+    @media screen and (max-width: 1100px) {
+      .profile__picture--container {
+        width: 55%;
       }
 
-      @media screen and (max-width: 900px) {
-        .instagram__feed {
-          margin-top: 25px;
-          padding-top: 25px;
-        }
-        .instagram__photo {
-          width: 32%;
-          margin: 0 2% 16px 0;
-        }
-
-        .instagram__photo:nth-of-type(n + 3) {
-          margin-right: 0;
-        }
+      article {
+        width: 45%;
       }
 
-      @media screen and (max-width: 850px) {
-        .profile__picture--container {
-          width: 60%;
-        }
-
-        article {
-          width: 40%;
-        }
+      .profile__picture--picture {
+        width: 400px;
+        height: 268px;
       }
 
-      @media screen and (max-width: 767px) {
-        .profile {
-          -webkit-flex-direction: column;
-          -ms-flex-direction: column;
-          flex-direction: column;
-        }
+      .instagram__photo {
+        width: 30%;
+      }
+    }
 
-        .profile__picture--container,
-        article {
-          width: 100%;
-          margin: 20px 0 0 0;
-        }
-
-        .profile__picture--picture {
-          width: 300px;
-          height: 200px;
-        }
+    @media screen and (max-width: 900px) {
+      .instagram__feed {
+        margin-top: 25px;
+        padding-top: 25px;
+      }
+      .instagram__photo {
+        width: 32%;
+        margin: 0 2% 16px 0;
       }
 
-      @media screen and (max-width: 600px) {
-       .instagram__photo {
-         width: 48%;
-         margin: 0 2% 16px 0;
-       }
+      .instagram__photo:nth-of-type(n + 3) {
+        margin-right: 0;
+      }
+    }
 
-       .instagram__photo:nth-of-type(n + 3) {
-         margin-right: 2%;
-       }
+    @media screen and (max-width: 850px) {
+      .profile__picture--container {
+        width: 60%;
+      }
 
-       .instagram__photo:nth-of-type(even) {
-         margin-right: 0;
-       }
-     }
+      article {
+        width: 40%;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      .profile {
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+      }
+
+      .profile__picture--container,
+      article {
+        width: 100%;
+        margin: 20px 0 0 0;
+      }
+
+      .profile__picture--picture {
+        width: 300px;
+        height: 200px;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .instagram__photo {
+       width: 48%;
+       margin: 0 2% 16px 0;
+      }
+
+      .instagram__photo:nth-of-type(n + 3) {
+       margin-right: 2%;
+      }
+
+      .instagram__photo:nth-of-type(even) {
+       margin-right: 0;
+      }
+    }
 
     </style>
 
@@ -205,6 +215,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </div>
 
     <div class="instagram__feed">
+      <!-- loading icon -->
+      <paper-spinner-lite class="instagram__loader" active="[[!loaded]]"></paper-spinner-lite>
       <template is="dom-repeat" items="[[responseData]]" as="picture">
         <a href="[[picture.link]]" class="instagram__photo" target="_blank">
           <img src="[[picture.images.standard_resolution.url]]" alt="Instagram Photo">
@@ -222,6 +234,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           responseData: {
             type: Array,
             value: () => {return []}
+          },
+          loaded: {
+            type: Boolean,
+            value: false
           }
         };
       }
@@ -239,6 +255,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           mock: true,
           success: function(obj) {
             this.responseData = obj.data;
+            this.loaded = true;
           }.bind(this)
         }).run();
       }

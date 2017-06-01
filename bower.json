@@ -15,6 +15,7 @@
     "paper-icon-button": "PolymerElements/paper-icon-button#2.0-preview",
     "polymer": "Polymer/polymer#^2.0.0-rc.3",
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0-rc.7",
+    "paper-spinner": "PolymerElements/paper-spinner#2.0-preview",
     "instafeed.js": "stevenschobert/instafeed.js#^1.4.1"
   },
   "resolutions": {
