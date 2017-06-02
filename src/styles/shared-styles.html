@@ -17,7 +17,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       h1 {
         position: relative;
-        text-align: right;
+        text-align: left;
         font-family: var(--font-raleway);
         color: var(--app-orange);
         font-weight: 700;
@@ -26,7 +26,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       h1:after {
         content: '';
         position: absolute;
-        right: 0;
+        left: 0;
         bottom: -15px;
         height: 4px;
         background: var(--app-navy);
@@ -36,16 +36,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       p, span {
         font: var(--font-open-sans);
         font-size: 16px;
-      }
-
-      @media screen and (max-width: 414px) {
-        h1 {
-          text-align: left;
-        }
-
-        h1:after {
-          left: 0;
-        }
       }
 
     </style>
