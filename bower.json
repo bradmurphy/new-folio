@@ -17,7 +17,8 @@
     "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0-rc.7",
     "paper-spinner": "PolymerElements/paper-spinner#2.0-preview",
     "iron-image": "PolymerElements/iron-image#2.0-preview",
-    "instafeed.js": "stevenschobert/instafeed.js#^1.4.1"
+    "instafeed.js": "stevenschobert/instafeed.js#^1.4.1",
+    "polymer-redux": "polymer-2"
   },
   "resolutions": {
     "polymer": "^2.0.0-rc.3"

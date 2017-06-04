@@ -10,6 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="styles/shared-styles.html">
+<link rel="import" href="redux-store.html">
 
 <dom-module id="app-work">
   <template>
@@ -26,14 +27,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <div class="card">
       <h1 class="work-header">WORK</h1>
-      <p>Ea duis bonorum nec, falli paulo aliquid ei eum.</p>
-      <p>Id nam odio natum malorum, tibique copiosae expetenda mel ea.Detracto suavitate repudiandae no eum. Id adhuc minim soluta nam.Id nam odio natum malorum, tibique copiosae expetenda mel ea.</p>
+
+
+      <template is="dom-repeat" items="{{work}}" as="project">
+        <span>{{project.name}}</span>
+      </template>
     </div>
   </template>
 
   <script>
-    class appWork extends Polymer.Element {
+    class appWork extends ReduxMixin(Polymer.Element) {
       static get is() { return 'app-work'; }
+
+      static get properties() {
+        return {
+          work: {
+            type: Array,
+            statePath: 'work'
+          }
+        }
+      }
+
     }
 
     window.customElements.define(appWork.is, appWork);

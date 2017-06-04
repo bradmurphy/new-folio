@@ -1,0 +1,118 @@
+<link rel="import" href="../bower_components/polymer-redux/polymer-redux.html">
+<link rel="import" href="redux.html">
+
+<script>
+  const initial = {
+    work: [
+      {
+        name: "creator-hub-website",
+        logo: "./images/logo-youtube.png",
+        title: "Creator Hub",
+        type: "Website",
+        client: "YouTube",
+        external: "http://www.youtube.com/yt/creators",
+        content: "./content/projects/creator-hub-website.html",
+        date: "June 2016",
+        thumb: "url(./images/thumb-creator-hub.jpg) no-repeat 50% 50%",
+        hero: "url(./images/hero-creator-hub.jpg) no-repeat 50% 50%",
+        technology: [
+          "HTML5",
+          "CSS3",
+          "Javascript",
+          "Polymer"
+        ]
+      },
+      {
+        name: "stitches-webapp",
+        logo: "./images/logo-hook.png",
+        title: "Stitches",
+        type: "Web App",
+        client: "Hook",
+        external: "http://hookerz.github.io/stitches",
+        content: "./content/projects/stitches-webapp.html",
+        date: "March 2016",
+        thumb: "url(./images/thumb-stitches.jpg) no-repeat 50% 50%",
+        hero: "url(./images/hero-stitches.jpg) no-repeat 50% 50%",
+        technology: [
+          "HTML5",
+          "CSS3",
+          "Javascript",
+          "GSAP",
+          "Polymer"
+        ]
+      },
+      {
+        name: "youtube-rewind",
+        logo: "./images/logo-youtube.png",
+        title: "Rewind to the Future",
+        type: "Website",
+        client: "YouTube",
+        external: "http://rewindtothefuture.withyoutube.com",
+        content: "./content/projects/youtube-rewind.html",
+        date: "December 2015",
+        thumb: "url(./images/thumb-youtube-rewind.jpg) no-repeat 50% 50%",
+        hero: "url(./images/hero-youtube-rewind.jpg) no-repeat 50% 50%",
+        technology: [
+          "HTML5",
+          "CSS3",
+          "Javascript",
+          "GSAP",
+          "Polymer",
+          "CreateJS",
+          "Underscore.js",
+          "THREE.js"
+        ]
+      },
+      {
+        name: "ok-google-masthead",
+        logo: "./images/logo-google.png",
+        title: "Ok Google",
+        type: "Masthead",
+        client: "Google",
+        internal: "./src/ok-google-masthead",
+        content: "./content/projects/ok-google-masthead.html",
+        date: "June 2015",
+        thumb: "url(./images/thumb-ok-google-masthead.jpg) no-repeat 10% 0",
+        technology: [
+          "HTML5",
+          "CSS3",
+          "Javascript",
+          "GSAP",
+          "DoubleClick"
+        ]
+      },
+      {
+        name: "ok-google-banner",
+        logo: "./images/logo-google.png",
+        title: "Ok Google",
+        type: "Banner",
+        client: "Google",
+        internal: "./src/ok-google-banner",
+        content: "./content/projects/ok-google-banner.html",
+        date: "April 2015",
+        thumb: "url(./images/thumb-ok-google.jpg) no-repeat 50% 50%",
+        technology: [
+          "HTML5",
+          "CSS3",
+          "Javascript",
+          "GSAP",
+          "DoubleClick"
+        ]
+      }
+    ]
+  };
+
+  const reducer = (state, action) => { return state; };
+
+  const store = Redux.createStore(
+    reducer,
+    initial,
+    Redux.compose(
+      window.devToolsExtension
+        ? window.devToolsExtension()
+        : v => v
+    )
+  );
+
+  const ReduxMixin = PolymerRedux(store);
+</script>
