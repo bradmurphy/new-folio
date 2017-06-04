@@ -136,9 +136,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         height: 268px;
       }
 
-      .instagram__photo {
+      /*.instagram__photo {
         width: 30%;
-      }
+      }*/
     }
 
     @media screen and (max-width: 900px) {
@@ -148,10 +148,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
       .instagram__photo {
         width: 32%;
-        margin: 0 2% 16px 0;
+        margin: 0 2% 2% 0;
       }
 
-      .instagram__photo:nth-of-type(n + 3) {
+      .instagram__photo:nth-of-type(4n + 4) {
+        margin-right: 2%;
+      }
+
+      .instagram__photo:nth-of-type(3n + 3) {
         margin-right: 0;
       }
     }
@@ -187,16 +191,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     @media screen and (max-width: 600px) {
       .instagram__photo {
-       width: 48%;
-       margin: 0 2% 16px 0;
+        width: 48%;
+        margin: 0 2% 4% 0;
       }
 
-      .instagram__photo:nth-of-type(n + 3) {
-       margin-right: 2%;
+      .instagram__photo:nth-of-type(odd) {
+        margin-right: 4%;
       }
 
       .instagram__photo:nth-of-type(even) {
-       margin-right: 0;
+        margin-right: 0;
       }
     }
 

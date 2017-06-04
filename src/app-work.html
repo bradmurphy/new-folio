@@ -10,6 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="styles/shared-styles.html">
+<link rel="import" href="app-project.html">
 <link rel="import" href="redux-store.html">
 
 <dom-module id="app-work">
@@ -18,10 +19,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       :host {
         display: block;
         padding: 17px 0;
+        margin-bottom:53px;
       }
 
       .work-header:after {
         width: 100px;
+      }
+
+      app-project {
+        margin-bottom: 25px;
+      }
+
+      app-project:last-child {
+        margin-bottom: 0px;
       }
     </style>
 
@@ -29,9 +39,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <h1 class="work-header">WORK</h1>
 
 
-      <template is="dom-repeat" items="{{work}}" as="project">
-        <span>{{project.name}}</span>
+      <template is="dom-repeat" items="[[work]]" as="project">
+        <app-project image="[[project.logo]]" width="[[project.width]]" height="[[project.height]]">
+          <span slot="card-date" class="card-date">[[project.date]]</span>
+          <h1 slot="card-header" class="card-header">[[project.title]]</h1>
+          <p slot="card-content" class="card-content">YouTube Rewind 2015. Celebrating the videos, people, music and moves that made 2015. #YouTubeRewind</p>
+          <span slot="card-tech" class="card-tech">[[_formatTechText(project.technology)]]</span>
+          <a href="[[project.external]]" target="_blank" slot="card-link" class="card-link">Link</a>
+        </app-project>
       </template>
+
     </div>
   </template>
 
@@ -46,6 +63,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             statePath: 'work'
           }
         }
+      }
+
+      _formatTechText(tech) {
+        return tech.join(', ');
       }
 
     }

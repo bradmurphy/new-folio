@@ -1,0 +1,331 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="styles/shared-styles.html">
+
+<dom-module id="app-project">
+  <template>
+    <style include="shared-styles">
+
+    /*
+      Host element styles
+     */
+    :host {
+      display: block;
+      background: #fff;
+      width: 100%;
+    }
+
+    /**
+    * Layout styles
+    */
+    .flex {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -ms-flex;
+      display: -o-flex;
+      display: flex;
+    }
+
+    .row {
+      -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+      flex-direction: row;
+    }
+
+    .col {
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+    }
+
+    .center {
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -ms-flex-pack: center;
+    }
+
+    .space {
+      -ms-flex-pack: space-between;
+      -webkit-justify-content: space-between;
+      justify-content: space-between;
+    }
+
+    .wrap {
+      -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+    }
+
+    /**
+     * Date layout styles
+     */
+    .card--date {
+      position: relative;
+      width: 22%;
+      box-sizing: border-box;
+    }
+
+    .tag {
+      position: absolute;
+      width: 140px;
+      height: auto;
+      top: 45px;
+      right: 20%;
+      background: var(--app-navy);
+      color: var(--app-orange);
+      font: 900 14px/18px 'Lato', sans-serif;
+      padding: 10px 15px;
+    }
+
+    .line {
+      position: absolute;
+      width: 1px;
+      height: 100%;
+      right: 20%;
+      background: var(--app-navy);
+    }
+
+    .badge {
+      width: 125px;
+      height: auto;
+      margin: 0 auto 12px auto;
+    }
+
+    /**
+     * Content layout styles
+     */
+    .block {
+      width: 88%;
+    }
+
+    .card--image {
+      width: 300px;
+      height: auto;
+      background-repeat: no-repeat !important;
+      background-position: center center !important;
+    }
+
+    .mobile {
+      display: none;
+    }
+
+    .padding {
+      padding: 10px 40px;
+    }
+
+   .card--header {
+     padding: 10px 40px;
+   }
+
+   .card--content {
+     width: 100%;
+     border-left: 1px solid var(--app-gray);
+     box-sizing: border-box;
+   }
+
+   .card--link {
+     padding: 30px 40px;
+     border-top: 1px solid var(--app-gray);
+     box-sizing: border-box;
+     position: relative;
+     overflow: hidden;
+   }
+
+   paper-card:hover .card--link .card--link-share {
+      -webkit-transform: translateY(0);
+      -moz-transform: translateY(0);
+      -ms-transform: translateY(0);
+      -o-transform: translateY(0);
+      transform: translateY(0);
+    }
+
+    paper-card {
+      -webkit-transition: all 0.7s cubic-bezier(.15,.77,.11,1.01);
+      -moz-transition: all 0.7s cubic-bezier(.15,.77,.11,1.01);
+      -ms-transition: all 0.7s cubic-bezier(.15,.77,.11,1.01);
+      -o-transition: all 0.7s cubic-bezier(.15,.77,.11,1.01);
+      transition: all 0.7s cubic-bezier(.15,.77,.11,1.01);
+    }
+
+    paper-card:hover {
+      -webkit-box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+
+    /**
+     * Content text styles
+     */
+    .card--header ::slotted(.card-header) {
+      width: 100%;
+      font: 300 60px/70px var(--font-raleway);
+      letter-spacing: -2px;
+      margin: 30px 0;
+    }
+
+    .card--content ::slotted(.card-content),
+    .card--link ::slotted(.card-link) {
+      font-size: 18px;
+      line-height: 22px;
+      text-decoration: none;
+    }
+
+    .card--link ::slotted( .card-link) {
+      float: right;
+      font: 900 14px/18px var(--font-raleway);
+      color: var(--app-orange);
+      text-transform: uppercase;
+      margin-left: 30px;
+    }
+
+    .card--link ::slotted(.card-tech) {
+      color: var(--app-navy);
+      font: 300 14px/18px var(--font-raleway);
+    }
+
+    /**
+     * 768 breakpoint styles
+     */
+    @media screen and (max-width: 1050px) {
+      .desktop {
+        display: none;
+      }
+
+      .mobile {
+        display: flex;
+      }
+
+      paper-card:hover {
+        -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+        0 1px 5px 0 rgba(0, 0, 0, 0.12),
+        0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+        0 1px 5px 0 rgba(0, 0, 0, 0.12),
+        0 3px 1px -2px rgba(0, 0, 0, 0.2);
+      }
+
+      .col-mobile {
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+      }
+
+      .card--date {
+        width: 100%;
+        padding: 15px 0;
+      }
+
+      .tag {
+        position: static;
+        width: auto;
+        background: transparent;
+        padding: 10px 40px;
+        color: var(--app-navy)
+      }
+
+      .line {
+        display: none;
+      }
+
+      .block {
+        width: 100%
+      }
+
+      .card--image {
+        width: auto;
+        margin: 0 auto;
+      }
+
+      .card--header ::slotted(.card-header) {
+        width: 100%;
+        font: 300 32px/40px var(--font-raleway);
+        margin-top: 15px;
+        margin-bottom: 0;
+      }
+
+      .card--content ::slotted(.card-content) {
+        margin-top: 0;
+        margin-bottom: 15px;
+      }
+    }
+
+    </style>
+
+    <paper-card class="flex row col-mobile">
+
+     <div class="card--date">
+
+       <div class="tag">
+         <slot name="card-date"></slot>
+       </div>
+
+       <div class="line"></div>
+
+     </div>
+
+     <div class="flex col center mobile">
+       <img src="images/badge.png" alt="Badge" class="badge">
+       <div class="card--image" style$="background: url({{image}}); background-size: {{width}} {{height}}; width: {{width}}; height: {{height}};"></div>
+     </div>
+
+     <div class="block">
+
+       <div class="card--header">
+         <slot name="card-header"></slot>
+       </div>
+
+       <div id="row" class="flex row">
+
+         <div class="flex col center desktop">
+           <img src="images/badge.png" alt="Badge" class="badge">
+           <div class="card--image" style$="background: url({{image}}); background-size: {{width}} {{height}}; height: {{height}};"></div>
+         </div>
+
+         <div class="flex col card--content">
+
+           <div class="padding">
+             <slot name="card-content"></slot>
+           </div>
+
+             <div class="flex row space card--link">
+               <slot name="card-tech"></slot>
+               <slot name="card-link"></slot>
+             </div>
+           </div>
+
+         </div>
+       </div>
+
+     </div>
+
+   </paper-card>
+
+  </template>
+
+  <script>
+    class appProject extends Polymer.Element {
+      static get is() { return 'app-project'; }
+
+      static get properties() {
+        return {
+          image: String,
+          height: String
+        }
+      }
+    }
+
+    window.customElements.define(appProject.is, appProject);
+  </script>
+</dom-module>
