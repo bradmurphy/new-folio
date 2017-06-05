@@ -1,6 +1,6 @@
 {
   "entrypoint": "index.html",
-  "shell": "src/app.html",
+  "shell": "src/folio-app.html",
   "fragments": [
     "src/app-about.html",
     "src/app-work.html",
