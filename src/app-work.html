@@ -27,7 +27,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       app-project {
-        margin-bottom: 25px;
+        margin-bottom: 50px;
+      }
+
+      app-project:nth-child(1n) {
+        margin-top: 53px;
       }
 
       app-project:last-child {
@@ -43,6 +47,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-project image="[[project.logo]]" width="[[project.width]]" height="[[project.height]]">
           <span slot="card-date" class="card-date">[[project.date]]</span>
           <h1 slot="card-header" class="card-header">[[project.title]]</h1>
+          <h2 slot="card-sub" class="card-sub">[[project.type]]</h2>
           <p slot="card-content" class="card-content">YouTube Rewind 2015. Celebrating the videos, people, music and moves that made 2015. #YouTubeRewind</p>
           <span slot="card-tech" class="card-tech">[[_formatTechText(project.technology)]]</span>
           <a href="[[project.external]]" target="_blank" slot="card-link" class="card-link">Link</a>

@@ -69,24 +69,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       flex-wrap: wrap;
     }
 
+    p, span {
+      font: var(--font-open-sans);
+      font-size: 16px;
+    }
+
     /**
      * Date layout styles
      */
     .card--date {
       position: relative;
-      width: 22%;
+      width: 18%;
       box-sizing: border-box;
     }
 
     .tag {
       position: absolute;
-      width: 140px;
+      width: 110px;
       height: auto;
       top: 45px;
       right: 20%;
       background: var(--app-navy);
-      color: var(--app-orange);
-      font: 900 14px/18px 'Lato', sans-serif;
       padding: 10px 15px;
     }
 
@@ -108,7 +111,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
      * Content layout styles
      */
     .block {
-      width: 88%;
+      width: 82%;
     }
 
     .card--image {
@@ -153,6 +156,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     paper-card {
+      border: 1px solid var(--app-navy);
       -webkit-transition: all 0.7s cubic-bezier(.15,.77,.11,1.01);
       -moz-transition: all 0.7s cubic-bezier(.15,.77,.11,1.01);
       -ms-transition: all 0.7s cubic-bezier(.15,.77,.11,1.01);
@@ -172,7 +176,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       width: 100%;
       font: 300 60px/70px var(--font-raleway);
       letter-spacing: -2px;
-      margin: 30px 0;
+      margin: 10px 0;
+    }
+
+    .card--header ::slotted(.card-sub) {
+      width: 100%;
+      font: 700 25px/30px var(--font-raleway);
+      letter-spacing: -1px;
+      margin: 20px 0;
+      color: var(--app-navy);
     }
 
     .card--content ::slotted(.card-content),
@@ -195,10 +207,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       font: 300 14px/18px var(--font-raleway);
     }
 
+    .card--date ::slotted(.card-date) {
+      color: var(--app-orange);
+      font: 700 14px/18px var(--font-raleway);
+    }
+
     /**
-     * 768 breakpoint styles
+     * 1100 breakpoint styles
      */
-    @media screen and (max-width: 1050px) {
+    @media screen and (max-width: 1150px) {
+      .card--date {
+        width: 22%;
+      }
+
+      .block {
+        width: 78%;
+      }
+    }
+
+    /**
+     * 960 breakpoint styles
+     */
+    @media screen and (max-width: 960px) {
       .desktop {
         display: none;
       }
@@ -232,7 +262,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         width: auto;
         background: transparent;
         padding: 10px 40px;
-        color: var(--app-navy)
+        color: var(--app-charcoal);
       }
 
       .line {
@@ -255,9 +285,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin-bottom: 0;
       }
 
+      .card--header ::slotted(.card-sub) {
+        font: 700 16px/20px var(--font-raleway);
+        letter-spacing: 0;
+      }
+
       .card--content ::slotted(.card-content) {
         margin-top: 0;
         margin-bottom: 15px;
+      }
+
+      .card--date ::slotted(.card-date) {
+        color: var(--app-navy);
+        font: 700 16px/20px var(--font-raleway);
       }
     }
 
@@ -284,6 +324,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
        <div class="card--header">
          <slot name="card-header"></slot>
+         <slot name="card-sub"></slot>
        </div>
 
        <div id="row" class="flex row">
@@ -299,7 +340,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
              <slot name="card-content"></slot>
            </div>
 
-             <div class="flex row space card--link">
+             <div class="flex row space center card--link">
                <slot name="card-tech"></slot>
                <slot name="card-link"></slot>
              </div>

@@ -233,7 +233,7 @@
   version "7.0.27"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.27.tgz#ba5e1a87aca2b4f5817289615ffe56472927687e"
 
-"@types/node@4.0.30":
+"@types/node@4.0.30", "@types/node@^4.0.30":
   version "4.0.30"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-4.0.30.tgz#553f490ed3030311620f88003e7abfc0edcb301e"
 
@@ -241,7 +241,7 @@
   version "6.0.77"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.77.tgz#3e4d569a427f17085e1ee4ecd3c31befb56af7b5"
 
-"@types/node@^4.0.30", "@types/node@^4.2.3":
+"@types/node@^4.2.3":
   version "4.2.10"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-4.2.10.tgz#1744256efcf037cb4ca0c3d802c3fd8aac54dd25"
 
@@ -5338,9 +5338,9 @@ ternary-stream@^2.0.1:
     merge-stream "^1.0.0"
     through2 "^2.0.1"
 
-"test-fixture@github:polymerelements/test-fixture":
+test-fixture@PolymerElements/test-fixture:
   version "3.0.0-rc.1"
-  resolved "https://codeload.github.com/polymerelements/test-fixture/tar.gz/26118ef0467501c33c02316e7016a2837baba10f"
+  resolved "https://codeload.github.com/PolymerElements/test-fixture/tar.gz/26118ef0467501c33c02316e7016a2837baba10f"
 
 test-value@^2.1.0:
   version "2.1.0"
