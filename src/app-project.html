@@ -125,12 +125,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       display: none;
     }
 
+    .desktop {
+      padding: 20px 0;
+    }
+
     .padding {
-      padding: 10px 40px;
+      padding: 0px 20px 10px 20px;;
     }
 
    .card--header {
-     padding: 10px 40px;
+     padding: 10px 20px 0 20px;
    }
 
    .card--content {
@@ -140,7 +144,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
    }
 
    .card--link {
-     padding: 30px 40px;
+     padding: 30px 20px;
      border-top: 1px solid var(--app-gray);
      box-sizing: border-box;
      position: relative;
@@ -183,7 +187,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       width: 100%;
       font: 700 25px/30px var(--font-raleway);
       letter-spacing: -1px;
-      margin: 20px 0;
+      margin-bottom: 20px;
+      text-transform: uppercase;
       color: var(--app-navy);
     }
 
@@ -235,6 +240,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       .mobile {
         display: flex;
+        padding: 20px 0;
       }
 
       paper-card:hover {
@@ -261,8 +267,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         position: static;
         width: auto;
         background: transparent;
-        padding: 10px 40px;
-        color: var(--app-charcoal);
+        padding: 10px 20px;
+        color: var(--app-navy);
       }
 
       .line {
@@ -320,7 +326,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        <div class="card--image" style$="background: url({{image}}); background-size: {{width}} {{height}}; width: {{width}}; height: {{height}};"></div>
      </div>
 
-     <div class="block">
+     <div class="block flex col">
 
        <div class="card--header">
          <slot name="card-header"></slot>

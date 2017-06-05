@@ -48,9 +48,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <span slot="card-date" class="card-date">[[project.date]]</span>
           <h1 slot="card-header" class="card-header">[[project.title]]</h1>
           <h2 slot="card-sub" class="card-sub">[[project.type]]</h2>
-          <p slot="card-content" class="card-content">YouTube Rewind 2015. Celebrating the videos, people, music and moves that made 2015. #YouTubeRewind</p>
+          <p slot="card-content" class="card-content">[[project.blurb]]</p>
           <span slot="card-tech" class="card-tech">[[_formatTechText(project.technology)]]</span>
-          <a href="[[project.external]]" target="_blank" slot="card-link" class="card-link">Link</a>
+          <a href="[[project.url]]" target="_blank" slot="card-link" class="card-link">Link</a>
         </app-project>
       </template>
 
