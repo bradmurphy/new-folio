@@ -1,6 +1,6 @@
 {
-  "name": "My App",
-  "short_name": "My App",
+  "name": "This is where I keep select digital creations that I find fun, unique or interesting.",
+  "short_name": "This is where I keep select digital creations that I find fun, unique or interesting.",
   "start_url": "./?homescreen=1",
   "display": "standalone",
   "theme_color": "#001f3f",
