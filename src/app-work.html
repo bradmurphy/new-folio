@@ -18,24 +18,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <style include="shared-styles">
       :host {
         display: block;
-        padding: 17px 0;
-        margin-bottom:53px;
+        padding: 17px 0 0 0;
       }
 
       .work-header:after {
         width: 100px;
       }
 
-      app-project {
-        margin-bottom: 50px;
+      .project {
+        margin: 50px 0;
       }
 
-      app-project:nth-child(1n) {
+      .project:nth-child(2) {
         margin-top: 53px;
-      }
-
-      app-project:last-child {
-        margin-bottom: 0px;
       }
     </style>
 
@@ -44,7 +39,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
       <template is="dom-repeat" items="[[work]]" as="project">
-        <app-project image="[[project.logo]]" width="[[project.width]]" height="[[project.height]]">
+        <app-project class="project" image="[[project.logo]]" width="[[project.width]]" height="[[project.height]]">
           <span slot="card-date" class="card-date">[[project.date]]</span>
           <h1 slot="card-header" class="card-header">[[project.title]]</h1>
           <h2 slot="card-sub" class="card-sub">[[project.type]]</h2>
