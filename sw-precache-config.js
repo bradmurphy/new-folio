@@ -13,8 +13,12 @@
 module.exports = {
   staticFileGlobs: [
     '/index.html',
+    '/images/**.*',
+    '/images/manifest/**.*',
+    '/src/**.*',
+    '/src/style/**.*',
     '/manifest.json',
-    '/bower_components/webcomponentsjs/*',
+    '/bower_components/webcomponentsjs/*'
   ],
-  navigateFallback: 'index.html',
+  navigateFallback: 'index.html'
 };
