@@ -20,7 +20,7 @@
     "iron-image": "PolymerElements/iron-image#2.0-preview",
     "iron-icon": "PolymerElements/iron-icon#2.0-preview",
     "instafeed.js": "stevenschobert/instafeed.js#^1.4.1",
-    "polymer-redux": "polymer-2"
+    "polymer-redux": "^1.0.5"
   },
   "resolutions": {
     "polymer": "^2.0.0-rc.3"

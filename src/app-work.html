@@ -11,7 +11,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="styles/shared-styles.html">
 <link rel="import" href="app-project.html">
-<link rel="import" href="redux-store.html">
+<link rel="import" href="redux.html">
 
 <dom-module id="app-work">
   <template>
@@ -60,6 +60,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         return {
           work: {
             type: Array,
+            statePath: 'work'
+          },
+          work: {
+            type: Object,
             statePath: 'work'
           }
         }
