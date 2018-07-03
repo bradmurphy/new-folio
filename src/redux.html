@@ -5,9 +5,25 @@
   const data = {
     work: [
       {
-        logo: "images/logo-youtube.png",
-        width: "95px",
+        logo: "images/logo-google.png",
+        width: "118px",
         height: "40px",
+        title: "Google News",
+        type: "Landing Page",
+        url: "https://news.google.com/about/",
+        date: "July 2018",
+        blurb: "Google News organizes what’s happening to help you learn more about the stories that matter to you and the world.",
+        technology: [
+          "HTML5",
+          "CSS3",
+          "JavaScript",
+          "AMP"
+        ]
+      },
+      {
+        logo: "images/logo-youtube.png",
+        width: "160px",
+        height: "34px",
         title: "Rewind 2017",
         type: "Website",
         url: "https://rewind2017.withyoutube.com",
@@ -24,9 +40,28 @@
         ]
       },
       {
+        logo: "images/logo-benefix.png",
+        width: "160px",
+        height: "38px",
+        title: "Benefix",
+        type: "Website",
+        url: "https://benefix.us/",
+        date: "November 2017",
+        blurb: "BeneFix is your one-stop-shop for small group benefits, offering 100% accurate and real-time quoting for medical insurance, saving you and your agency both time, money, and more.",
+        technology: [
+          "HTML5",
+          "CSS3",
+          "JavaScript",
+          "jQuery",
+          "GSAP",
+          "Slick",
+          "Metalsmith"
+        ]
+      },
+      {
         logo: "images/logo-youtube.png",
-        width: "95px",
-        height: "40px",
+        width: "160px",
+        height: "34px",
         title: "This Is Everything",
         type: "Landing Page",
         url: "http://www.youtube.com/yt/originals/thisiseverything",
@@ -42,8 +77,8 @@
       },
       {
         logo: "images/logo-youtube.png",
-        width: "95px",
-        height: "40px",
+        width: "160px",
+        height: "34px",
         title: "Rewind 2016",
         type: "Website",
         url: "https://rewind2016.withyoutube.com/",
@@ -76,8 +111,8 @@
       },
       {
         logo: "images/logo-youtube.png",
-        width: "95px",
-        height: "40px",
+        width: "160px",
+        height: "34px",
         title: "Rewind to the Future",
         type: "Website",
         url: "http://rewindtothefuture.withyoutube.com",
@@ -96,9 +131,9 @@
       }
     ]
   };
-  
+
   const reducer = state => state;
   const store = Redux.createStore(reducer, data);
-  
+
   ReduxMixin = PolymerRedux(store);
 </script>
