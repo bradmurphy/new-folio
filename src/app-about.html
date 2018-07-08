@@ -58,8 +58,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         transition: width 0.3s ease 0s, left 0.3s ease 0s;
       }
 
-      .hook:hover:after {
-        width: 40px;
+      @media screen and (min-width: 960px) {
+        .hook:hover:after {
+          width: 40px;
+        }
       }
 
       article p {
@@ -139,22 +141,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       @media screen and (max-width: 1100px) {
-        .profile__picture--container {
-          width: 55%;
-        }
-
-        article {
-          width: 45%;
-        }
-
         .profile__picture--picture {
           width: 400px;
-          height: 268px;
+          height: 325px;
+        }
+      }
+
+      @media screen and (max-width: 960px) {
+        .profile {
+          -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+          flex-direction: column;
         }
 
-        /*.instagram__photo {
-        width: 30%;
-      }*/
+        .profile__picture--container,
+        article {
+          width: 100%;
+          margin: 20px 0 0 0;
+        }
       }
 
       @media screen and (max-width: 900px) {
@@ -176,32 +180,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
       }
 
-      @media screen and (max-width: 850px) {
-        .profile__picture--container {
-          width: 60%;
-        }
-
-        article {
-          width: 40%;
-        }
-      }
-
       @media screen and (max-width: 767px) {
-        .profile {
-          -webkit-flex-direction: column;
-          -ms-flex-direction: column;
-          flex-direction: column;
-        }
-
-        .profile__picture--container,
-        article {
-          width: 100%;
-          margin: 20px 0 0 0;
-        }
-
         .profile__picture--picture {
           width: 300px;
-          height: 200px;
+          height: 225px;
         }
       }
 
@@ -217,14 +199,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         .instagram__photo:nth-of-type(even) {
           margin-right: 0;
-        }
-      }
-
-
-      @media screen and (max-width: 414px) {
-        .profile__picture--picture {
-          width: 280px;
-          height: 187px;
         }
       }
     </style>

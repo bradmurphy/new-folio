@@ -149,19 +149,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .card--link {
-        padding: 30px 20px;
+        padding: 10px 0 10px 20px;
         border-top: 1px solid var(--app-gray);
         box-sizing: border-box;
         position: relative;
         overflow: hidden;
-      }
-
-      paper-card:hover .card--link .card--link-share {
-        -webkit-transform: translateY(0);
-        -moz-transform: translateY(0);
-        -ms-transform: translateY(0);
-        -o-transform: translateY(0);
-        transform: translateY(0);
       }
 
       paper-card {
@@ -173,9 +165,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         transition: all 0.7s cubic-bezier(.15, .77, .11, 1.01);
       }
 
-      paper-card:hover {
-        -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+      @media screen and (min-width: 960px) {
+        paper-card:hover {
+          -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        }
       }
 
       /**
@@ -204,17 +198,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .card--link ::slotted(.card-link) {
-        font-size: 18px;
-        line-height: 22px;
-        text-decoration: none;
-      }
-
-      .card--link ::slotted( .card-link) {
         float: right;
         font: 900 14px/18px var(--font-raleway);
+        padding: 20px;
         color: var(--app-orange);
         text-transform: uppercase;
-        margin-left: 30px;
+        text-decoration: none;
+        margin-left: 10px;
       }
 
       .card--link ::slotted(.card-tech) {
@@ -253,15 +243,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         .mobile {
           display: flex;
           padding: 20px 0;
-        }
-
-        paper-card:hover {
-          -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-          0 1px 5px 0 rgba(0, 0, 0, 0.12),
-          0 3px 1px -2px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-          0 1px 5px 0 rgba(0, 0, 0, 0.12),
-          0 3px 1px -2px rgba(0, 0, 0, 0.2);
         }
 
         .col-mobile {

@@ -30,10 +30,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="folio-app">
   <template>
     <style>
-
       /**
        * Host, variables and basic element styles
        */
+
       :host {
         --max-site-width: 1280px;
         --app-orange: #f27124;
@@ -68,12 +68,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         background-image: url('../images/logo.png');
         background-repeat: no-repeat;
         background-position: 50% 50%;
-        -webkit-background-size: 80px;
-        -o-background-size: 80px;
-        background-size: 80px;
-        color: var(--app-charcoal);
+        -webkit-background-size: 100px;
+        -o-background-size: 100px;
+        background-size: 100px;
         margin-top: 20px;
-        height: 80px;
+        height: 100px;
       }
 
       .drawer-list {
@@ -112,12 +111,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin: 0 auto;
         padding: 0;
         -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
+        -moz-box-sizing: border-box;
         box-sizing: border-box;
       }
 
       .site__header {
-        height: 100px;
+        height: 140px;
         -ms-flex-pack: justify;
         -webkit-justify-content: space-between;
         justify-content: space-between;
@@ -133,6 +132,43 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         margin-right: 20px;
         letter-spacing: 1px;
         text-decoration: none;
+      }
+
+      .header-list a:after {
+        position: absolute;
+        margin-top: 32px;
+        width: 0;
+        content: '';
+        display: inline-block;
+        height: 2px;
+        background: var(--app-orange);
+        transition: width 0.3s ease 0s, left 0.3s ease 0s;
+      }
+
+      .header-list a:nth-child(1):after {
+        margin-left: -75px;
+      }
+
+      .header-list a:nth-child(2):after {
+        margin-left: -65px;
+      }
+
+      .header-list a:nth-child(3):after {
+        margin-left: -100px;
+      }
+
+      @media screen and (min-width: 960px) {
+        .header-list a:nth-child(1):hover:after {
+          width: 75px;
+        }
+
+        .header-list a:nth-child(2):hover:after {
+          width: 65px;
+        }
+
+        .header-list a:nth-child(3):hover:after {
+          width: 100px;
+        }
       }
 
       .header-list a.iron-selected {
@@ -155,7 +191,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       .header__logo {
-        height: 65px;
+        height: 100px;
       }
 
       .header__logo-link {
@@ -191,7 +227,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
       }
 
-      @media screen and (max-width: 414px) {
+      @media screen and (max-width: 600px) {
         .header-list {
           display: none;
         }
@@ -211,11 +247,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
 
     <app-location route="{{route}}"></app-location>
-    <app-route
-        route="{{route}}"
-        pattern="[[rootPattern]]:page"
-        data="{{routeData}}"
-        tail="{{subroute}}"></app-route>
+    <app-route route="{{route}}" pattern="[[rootPattern]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
     <app-drawer-layout force-narrow fullbleed class="site-layout">
       <!-- Drawer content -->
@@ -248,11 +280,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </app-header>
 
         <main class="site__content" id="siteContent">
-          <iron-pages
-              selected="[[page]]"
-              attr-for-selected="name"
-              fallback-selection="404"
-              role="main">
+          <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="404" role="main">
             <app-about name="about"></app-about>
             <app-work name="work"></app-work>
             <app-contact name="contact"></app-contact>
@@ -313,8 +341,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
 
         TweenMax.fromTo(this.$.siteContent, 0.725,
-          {opacity: 0, y: -125, ease: Power1.easeIn},
-          {opacity: 1, y: 0, ease: Power4.easeOut}
+          { opacity: 0, y: -125, ease: Power1.easeIn },
+          { opacity: 1, y: 0, ease: Power4.easeOut }
         )
       }
 
@@ -322,10 +350,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         // Load page import on demand. Show 404 page if fails
         var resolvedPageUrl = this.resolveUrl('app-' + page + '.html');
         Polymer.importHref(
-            resolvedPageUrl,
-            null,
-            this._showPage404.bind(this),
-            true);
+          resolvedPageUrl,
+          null,
+          this._showPage404.bind(this),
+          true);
       }
 
       _showPage404() {
