@@ -40,6 +40,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         --app-navy: #001f3f;
         --app-charcoal: #333;
         --app-gray: #e0e0e0;
+        --app-white: #fff;
         --app-hook: #ff498a;
         --font-raleway: 'Raleway', sans-serif;
         --font-open-sans: 'Open Sans Condensed', sans-serif;
@@ -143,6 +144,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         height: 2px;
         background: var(--app-orange);
         transition: width 0.3s ease 0s, left 0.3s ease 0s;
+      }
+
+      .header-list a.iron-selected:after {
+        background: var(--app-white);
       }
 
       .header-list a:nth-child(1):after {
