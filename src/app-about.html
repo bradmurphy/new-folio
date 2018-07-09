@@ -180,13 +180,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
       }
 
-      @media screen and (max-width: 767px) {
-        .profile__picture--picture {
-          width: 300px;
-          height: 225px;
-        }
-      }
-
       @media screen and (max-width: 600px) {
         .instagram__photo {
           width: 48%;
@@ -199,6 +192,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         .instagram__photo:nth-of-type(even) {
           margin-right: 0;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        .profile__picture--picture {
+          width: 300px;
+          height: 225px;
+        }
+      }
+
+      @media screen and (max-width: 350px) {
+        .profile__picture--picture {
+          width: 250px;
+          height: 175px;
         }
       }
     </style>
