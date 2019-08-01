@@ -113,6 +113,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         border-top: 5px solid var(--app-navy);
       }
 
+      .instagram__error {
+        width: 100%;
+        text-align: center;
+      }
+
+      .instagram__error span {
+        font-size: 16px;
+      }
+
       .instagram__loader {
         position: absolute;
         left: 50%;
@@ -238,13 +247,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </article>
     </div>
 
+    <!-- loading icon -->
+
+
     <div class="instagram__feed">
-      <!-- loading icon -->
       <paper-spinner-lite class="instagram__loader" active="[[!loaded]]"></paper-spinner-lite>
-      <template is="dom-repeat" items="[[responseData]]" as="picture">
-        <a href="[[picture.link]]" class="instagram__photo" target="_blank">
-          <iron-image src="[[picture.images.standard_resolution.url]]" alt="Instagram Photo" fade></iron-image>
-        </a>
+      <template is="dom-if" if="{{checkError(error, loaded)}}">
+        <div class="instagram__error">
+          <span>Oops!  Instagram is being fussy.</span>
+        </div>
+      </template>
+      <template is="dom-if" if="{{checkResponse(error, loaded)}}">
+        <template is="dom-repeat" items="[[responseData]]" as="picture">
+          <a href="[[picture.link]]" class="instagram__photo" target="_blank">
+            <iron-image src="[[picture.images.standard_resolution.url]]" alt="Instagram Photo" fade></iron-image>
+          </a>
+        </template>
       </template>
     </div>
   </template>
@@ -262,12 +280,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           loaded: {
             type: Boolean,
             value: false
+          },
+          error: {
+            type: Boolean,
+            value: false
           }
         };
       }
 
       constructor() {
         super();
+      }
+
+      checkError(err, loaded) {
+        return err && loaded;
+      }
+
+      checkResponse(err, loaded) {
+        return !err && loaded;
       }
 
       ready() {
@@ -280,6 +310,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           success: function (obj) {
             this.responseData = obj.data;
             this.loaded = true;
+          }.bind(this),
+          error: function(err) {
+            console.log(err);
+            this.loaded = true;
+            this.error = true;
           }.bind(this)
         }).run();
       }
